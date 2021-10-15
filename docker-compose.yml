@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  mqtt:
+    container_name: mqtt
+    hostname: mqtt
+    image: eclipse-mosquitto
+    ports:
+      - "1883:1883/tcp"
+      # - "9001:9001/tcp" # websockets
+    volumes:
+      - './mosquitto.conf:/mosquitto/config/mosquitto.conf'
+      - './data:/mosquitto/data'
+      - './log:/mosquitto/log'
+    restart: unless-stopped
